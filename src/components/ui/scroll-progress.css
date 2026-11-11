@@ -1,0 +1,12 @@
+.scrollbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 120;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--rose), var(--blush) 45%, var(--champagne));
+  box-shadow: 0 0 14px rgba(216, 180, 119, 0.5);
+  pointer-events: none;
+}

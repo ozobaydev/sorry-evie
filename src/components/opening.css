@@ -1,0 +1,117 @@
+.opening {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: clamp(7rem, 14vh, 11rem);
+  padding-bottom: clamp(6rem, 12vh, 9rem);
+  background: var(--navy);
+}
+
+.opening__shell {
+  display: flex;
+}
+
+.opening__copy {
+  max-width: min(640px, 100%);
+}
+
+.opening__title {
+  margin-bottom: 0.5rem;
+  text-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.opening__sub {
+  margin-bottom: 0.35rem;
+  color: rgba(244, 232, 215, 0.9);
+}
+
+.opening__script {
+  color: var(--blush);
+  margin: 0 0 1.5rem;
+  text-shadow: 0 6px 30px rgba(232, 197, 197, 0.35);
+}
+
+.opening__body {
+  display: grid;
+  gap: 0.1rem;
+  color: rgba(244, 232, 215, 0.72);
+  margin-bottom: 2.1rem;
+  max-width: 30ch;
+}
+
+.opening__body strong {
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.opening__cta {
+  padding: 0.9rem 1.9rem;
+}
+
+/* ------------------------------------------------------- scroll hint */
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(2.6rem, 6vh, 4.2rem);
+  transform: translateX(-50%);
+  z-index: 4;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 215, 0.55);
+}
+
+.scroll-hint__rail {
+  position: relative;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(244, 232, 215, 0.45), transparent);
+  overflow: hidden;
+}
+
+.scroll-hint__dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 10px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--champagne);
+  animation: railDrop 2.6s var(--ease) infinite;
+}
+
+@keyframes railDrop {
+  0% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(48px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .opening {
+    min-height: 92svh;
+    align-items: flex-end;
+    padding-bottom: clamp(7rem, 16vh, 10rem);
+  }
+  .opening__body {
+    max-width: 34ch;
+  }
+  .scroll-hint {
+    bottom: 1.8rem;
+  }
+  .scroll-hint__rail {
+    height: 34px;
+  }
+}

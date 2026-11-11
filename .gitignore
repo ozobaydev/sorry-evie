@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+.env
+.env.*
+
+# Claude Code local-only settings
+.claude/settings.local.json

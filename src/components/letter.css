@@ -1,0 +1,106 @@
+.letter {
+  background: linear-gradient(174deg, #f3e5d3 0%, #f6ecdd 38%, #efdfd2 100%);
+  color: var(--ink);
+}
+
+.letter__bg {
+  background-image: radial-gradient(rgba(150, 116, 84, 0.08) 1px, transparent 1px);
+  background-size: 19px 19px;
+}
+
+.letter__shell {
+  display: flex;
+  justify-content: center;
+}
+
+.letter__sheet {
+  position: relative;
+  width: min(760px, 100%);
+  padding: clamp(2.4rem, 5.5vw, 4.2rem) clamp(1.5rem, 5vw, 4rem);
+  transform: rotate(-0.5deg);
+  border-radius: 2px;
+}
+
+.letter__pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e3a9b4, #a9636f 70%);
+  box-shadow: 0 4px 10px rgba(80, 40, 45, 0.35), inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.letter__heading {
+  color: #33251f;
+  margin-bottom: 1.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.letter__lines {
+  display: grid;
+  gap: 0.55rem;
+  position: relative;
+  z-index: 1;
+  padding-left: clamp(0rem, 2vw, 1.4rem);
+  border-left: 1px solid rgba(150, 116, 84, 0.24);
+}
+
+.letter__line {
+  font-size: clamp(1.35rem, 3.4vw, 2.05rem);
+  line-height: 1.35;
+  color: #6a4c40;
+}
+
+.letter__line:nth-child(even) {
+  padding-left: clamp(0.6rem, 3vw, 2.2rem);
+}
+
+.letter__closing {
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #2f231d;
+}
+
+.letter__sign {
+  position: relative;
+  z-index: 1;
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+.letter__sign .script {
+  color: #b9808f;
+  line-height: 1.1;
+}
+
+.letter__flourish {
+  width: clamp(140px, 26vw, 210px);
+  height: auto;
+  opacity: 0.8;
+}
+
+.letter__from {
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #a08974;
+}
+
+@media (max-width: 560px) {
+  .letter__sheet {
+    transform: none;
+  }
+  .letter__lines {
+    gap: 0.35rem;
+  }
+}

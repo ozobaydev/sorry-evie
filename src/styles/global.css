@@ -1,0 +1,454 @@
+/* ===========================================================================
+   One Moment — global design system
+   ======================================================================== */
+
+:root {
+  /* palette */
+  --navy: #071225;
+  --deep: #101b35;
+  --plum: #241b32;
+  --lavender: #80708f;
+  --rose: #c58f9d;
+  --cream: #f4e8d7;
+  --champagne: #d8b477;
+  --blush: #e8c5c5;
+
+  --ink: #3a2f2a;
+  --ink-soft: #6b5a52;
+  --paper: #f7efe2;
+  --paper-deep: #ecdcc6;
+
+  /* type */
+  --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --script: 'Allura', 'Segoe Script', 'Brush Script MT', cursive;
+
+  /* rhythm */
+  --band: clamp(1.1rem, 2.2vw, 2.1rem);
+  --pad-x: clamp(1.15rem, 5vw, 5.5rem);
+  --pad-y: clamp(4.5rem, 9vw, 8.5rem);
+  --maxw: 1320px;
+  --radius: 18px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --slow: 1.1s;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(197, 143, 157, 0.4);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------- typography */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.06;
+  margin: 0;
+  letter-spacing: -0.012em;
+}
+
+p {
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: clamp(0.6rem, 1.05vw, 0.72rem);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--rose);
+  margin: 0 0 1.15rem;
+}
+
+.eyebrow--ink {
+  color: #b98a72;
+}
+
+.display {
+  font-size: clamp(2.9rem, 8.4vw, 6.2rem);
+}
+
+.h1 {
+  font-size: clamp(2.3rem, 5.6vw, 4.15rem);
+}
+
+.h2 {
+  font-size: clamp(1.9rem, 4.1vw, 3.1rem);
+}
+
+.h3 {
+  font-size: clamp(1.35rem, 2.3vw, 1.8rem);
+}
+
+.lede {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2vw, 1.62rem);
+  line-height: 1.45;
+  color: rgba(244, 232, 215, 0.92);
+}
+
+.script {
+  font-family: var(--script);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.script--xl {
+  font-size: clamp(3rem, 8vw, 5.6rem);
+}
+
+.script--lg {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+}
+
+.script--md {
+  font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+}
+
+.script--sm {
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+}
+
+.muted {
+  color: rgba(244, 232, 215, 0.62);
+}
+
+.muted-ink {
+  color: var(--ink-soft);
+}
+
+.body-sm {
+  font-size: clamp(0.86rem, 1.35vw, 0.97rem);
+  line-height: 1.85;
+}
+
+/* ------------------------------------------------------------------ layout */
+.section {
+  position: relative;
+  isolation: isolate;
+  padding: var(--pad-y) var(--pad-x);
+  overflow: hidden;
+}
+
+.shell {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* the tilted "film strip" bands from the reference */
+.band-top {
+  clip-path: polygon(0 var(--band), 100% 0, 100% 100%, 0 100%);
+  margin-top: calc(var(--band) * -1);
+  padding-top: calc(var(--pad-y) + var(--band));
+}
+
+.band-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--band)), 0 100%);
+  padding-bottom: calc(var(--pad-y) + var(--band));
+}
+
+.band-both {
+  clip-path: polygon(0 var(--band), 100% 0, 100% calc(100% - var(--band)), 0 100%);
+  margin-top: calc(var(--band) * -1);
+  padding-top: calc(var(--pad-y) + var(--band));
+  padding-bottom: calc(var(--pad-y) + var(--band));
+}
+
+.band-both-alt {
+  clip-path: polygon(0 0, 100% var(--band), 100% 100%, 0 calc(100% - var(--band)));
+  margin-top: calc(var(--band) * -1);
+  padding-top: calc(var(--pad-y) + var(--band));
+  padding-bottom: calc(var(--pad-y) + var(--band));
+}
+
+/* backdrop layer helper */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.backdrop > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 85% at 50% 45%, transparent 38%, rgba(4, 8, 18, 0.72) 100%);
+}
+
+/* --------------------------------------------------------------- buttons */
+.btn {
+  --btn-fg: var(--cream);
+  --btn-bd: rgba(244, 232, 215, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.78rem 1.6rem;
+  border: 1px solid var(--btn-bd);
+  border-radius: 999px;
+  color: var(--btn-fg);
+  font-size: 0.83rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  /* No backdrop-filter here: buttons appear all over the page and each one
+     forces the compositor to re-sample what is behind it on every frame. The
+     translucent fill reads the same over these backgrounds. */
+  background: rgba(255, 255, 255, 0.07);
+  transition: background 0.45s var(--ease), border-color 0.45s var(--ease), transform 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+
+.btn svg {
+  transition: transform 0.45s var(--ease);
+}
+
+.btn:hover {
+  background: rgba(244, 232, 215, 0.13);
+  border-color: rgba(244, 232, 215, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+.btn--ink {
+  --btn-fg: #4a3a31;
+  --btn-bd: rgba(74, 58, 49, 0.35);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.btn--ink:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(74, 58, 49, 0.6);
+}
+
+/* --------------------------------------------------------------- surfaces */
+.glass {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.028));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.paper {
+  position: relative;
+  background: linear-gradient(158deg, #fdf7ec 0%, var(--paper) 45%, var(--paper-deep) 100%);
+  color: var(--ink);
+  box-shadow: 0 24px 60px rgba(60, 36, 24, 0.22), 0 2px 0 rgba(255, 255, 255, 0.6) inset;
+}
+
+.paper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(150, 116, 84, 0.13) 1px, transparent 1px),
+    radial-gradient(rgba(150, 116, 84, 0.09) 1px, transparent 1px);
+  background-size: 13px 13px, 29px 29px;
+  background-position: 0 0, 7px 11px;
+}
+
+/* torn / deckled paper edge */
+.deckle {
+  --deckle: 9px;
+  -webkit-mask-image: radial-gradient(var(--deckle) at 50% 0, transparent 98%, #000 100%),
+    radial-gradient(var(--deckle) at 50% 100%, transparent 98%, #000 100%), linear-gradient(#000, #000);
+  -webkit-mask-size: 26px var(--deckle), 26px var(--deckle), 100% calc(100% - var(--deckle) * 2);
+  -webkit-mask-position: 0 0, 0 100%, 0 var(--deckle);
+  -webkit-mask-repeat: repeat-x, repeat-x, no-repeat;
+  mask-image: radial-gradient(var(--deckle) at 50% 0, transparent 98%, #000 100%),
+    radial-gradient(var(--deckle) at 50% 100%, transparent 98%, #000 100%), linear-gradient(#000, #000);
+  mask-size: 26px var(--deckle), 26px var(--deckle), 100% calc(100% - var(--deckle) * 2);
+  mask-position: 0 0, 0 100%, 0 var(--deckle);
+  mask-repeat: repeat-x, repeat-x, no-repeat;
+}
+
+.hand {
+  font-family: var(--script);
+  color: #6d4f42;
+}
+
+/* ------------------------------------------------------------- utilities */
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* admin live-preview highlight */
+.is-field-highlight {
+  animation: fieldPulse 2.4s var(--ease);
+  border-radius: 8px;
+}
+
+@keyframes fieldPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(216, 180, 119, 0);
+  }
+  12%,
+  70% {
+    box-shadow: 0 0 0 3px rgba(216, 180, 119, 0.95), 0 0 34px 10px rgba(216, 180, 119, 0.42);
+    background-color: rgba(216, 180, 119, 0.14);
+  }
+}
+
+/* point & edit mode, used by the /admin live preview */
+.is-picking [data-field] {
+  outline: 1px dashed rgba(216, 180, 119, 0.55);
+  outline-offset: 2px;
+  cursor: crosshair !important;
+  border-radius: 4px;
+}
+
+.is-picking [data-field]:hover {
+  outline: 2px solid var(--champagne);
+  background-color: rgba(216, 180, 119, 0.16);
+}
+
+.is-picking * {
+  cursor: crosshair !important;
+}
+
+.boot {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  font-family: var(--sans);
+  color: rgba(244, 232, 215, 0.6);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+/* ---------------------------------------------------------- idle sections
+   Sections far from the viewport stop their ambient loops entirely. Eleven
+   sections of drifting scenery all running at once is what made scrolling
+   stutter; this keeps the work proportional to what is actually on screen. */
+.is-idle *,
+.is-idle *::before,
+.is-idle *::after {
+  animation-play-state: paused !important;
+}
+
+/* ------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --band: 0.9rem;
+    --slow: 0.8s;
+  }
+  body {
+    line-height: 1.62;
+  }
+}

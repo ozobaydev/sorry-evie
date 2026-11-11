@@ -1,0 +1,193 @@
+.apology {
+  background: linear-gradient(168deg, #f8f0e2 0%, var(--cream) 40%, #efe0cb 100%);
+  color: var(--ink);
+}
+
+.apology__bg {
+  background-image: radial-gradient(rgba(160, 124, 92, 0.1) 1px, transparent 1px),
+    radial-gradient(rgba(160, 124, 92, 0.07) 1px, transparent 1px);
+  background-size: 15px 15px, 33px 33px;
+  background-position: 0 0, 8px 12px;
+  opacity: 0.75;
+}
+
+.apology__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr) minmax(0, 0.62fr);
+  gap: clamp(1.6rem, 4vw, 3.6rem);
+  align-items: center;
+}
+
+/* --------------------------------------------------------- note + photo */
+.apology__left {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding-bottom: 1.5rem;
+}
+
+.notecard {
+  position: relative;
+  width: min(300px, 62%);
+  padding: 2.1rem 1.5rem 1.6rem;
+  transform: rotate(-3.4deg);
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.notecard__clip {
+  position: absolute;
+  top: -16px;
+  left: 26px;
+  width: 20px;
+  height: 46px;
+  border: 3px solid #b9a996;
+  border-radius: 12px 12px 4px 4px;
+  border-bottom-color: transparent;
+  transform: rotate(-9deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+}
+
+.notecard__line {
+  font-size: clamp(1.05rem, 2.05vw, 1.36rem);
+  line-height: 1.65;
+  color: #6d4f42;
+  position: relative;
+  z-index: 1;
+}
+
+.notecard__sign {
+  margin-top: 1rem;
+  font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+  color: #a67b6a;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.apology__photo {
+  width: min(210px, 46%);
+  margin-left: -11%;
+  margin-top: 2.6rem;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------- middle */
+.apology__heading {
+  color: #33251f;
+  margin-bottom: 0.75rem;
+}
+
+.apology__sub {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+  color: #57443b;
+  margin-bottom: 0.9rem;
+}
+
+.apology__script {
+  color: #c0808f;
+}
+
+.apology__foot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(120, 92, 72, 0.22);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #927463;
+}
+
+/* ------------------------------------------------------------ checklist */
+.apology__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.15rem;
+  border-left: 1px solid rgba(120, 92, 72, 0.2);
+  padding-left: clamp(1rem, 2.2vw, 1.9rem);
+}
+
+.apology__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: clamp(0.82rem, 1.35vw, 0.92rem);
+  color: #5b463c;
+  line-height: 1.4;
+}
+
+.apology__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(197, 143, 157, 0.55);
+  color: #bb8091;
+  background: rgba(255, 255, 255, 0.55);
+  transition: transform 0.5s var(--ease), background 0.5s var(--ease);
+}
+
+.apology__list li:hover .apology__tick {
+  transform: scale(1.12);
+  background: rgba(232, 197, 197, 0.4);
+}
+
+/* ---------------------------------------------------------- responsive */
+@media (max-width: 1080px) {
+  .apology__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .apology__list {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid rgba(120, 92, 72, 0.2);
+    padding-top: 1.6rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .apology__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.4rem;
+  }
+  .apology__left {
+    justify-content: center;
+    padding-bottom: 0.5rem;
+  }
+  .notecard {
+    width: min(270px, 58%);
+    padding: 1.9rem 1.2rem 1.3rem;
+  }
+  .apology__photo {
+    width: min(180px, 42%);
+    margin-top: 3.4rem;
+  }
+  .apology__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .notecard {
+    width: 60%;
+  }
+  .apology__photo {
+    width: 44%;
+    margin-left: -8%;
+  }
+}
